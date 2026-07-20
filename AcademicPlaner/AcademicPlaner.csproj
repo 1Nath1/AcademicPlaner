@@ -66,6 +66,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="..\..\..\..\..\Downloads\calendar.png" Link="Resources\Images\calendar.png" />
+	  <Content Include="..\..\..\fontawesome\fontawesome-free-7.3.1-desktop\otfs\Font Awesome 7 Free-Regular-400.otf" Link="Resources\Fonts\Font Awesome 7 Free-Regular-400.otf" />
+	  <MauiFont Include="..\..\..\fontawesome\fontawesome-free-7.3.1-desktop\otfs\Font Awesome 7 Free-Solid-900.otf" Link="Resources\Fonts\Font Awesome 7 Free-Solid-900.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Include="..\..\..\Nunito\static\Nunito-Bold.ttf" Link="Resources\Fonts\Nunito-Bold.ttf" />
+	  <MauiFont Include="..\..\..\Nunito\static\Nunito-Regular.ttf" Link="Resources\Fonts\Nunito-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
