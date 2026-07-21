@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademicPlaner.Views.SubjectsView">
 
-    <VerticalStackLayout Padding="20" Spacing="0">
+    <Grid Padding="20" RowSpacing="10" RowDefinitions="auto,auto,*">
 
-        <Label Text="Przedmioty" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20"/>
+        <Label Grid.Row="0" Text="Przedmioty" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20"/>
 
         <!-- NAGŁÓWEK TABELI -->
-        <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+        <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
             <Label Grid.Column="0" Text="Nazwa" FontAttributes="Bold"/>
             <Label Grid.Column="1" Text="Sala" FontAttributes="Bold"/>
             <Label Grid.Column="2" Text="ECTS" FontAttributes="Bold"/>
@@ -18,7 +18,7 @@
 
         <!-- WIERSZE TABELI -->
         
-        <CollectionView ItemsSource="{Binding Subjects}">
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Subjects}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10">
@@ -32,6 +32,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-    </VerticalStackLayout>
+    </Grid>
 
 </ContentView>
