@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AcademicPlaner.Views.SubjectsView">
+
+    <VerticalStackLayout Padding="20" Spacing="0">
+
+        <Label Text="Przedmioty" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20"/>
+
+        <!-- NAGŁÓWEK TABELI -->
+        <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+            <Label Grid.Column="0" Text="Nazwa" FontAttributes="Bold"/>
+            <Label Grid.Column="1" Text="Sala" FontAttributes="Bold"/>
+            <Label Grid.Column="2" Text="ECTS" FontAttributes="Bold"/>
+            <Label Grid.Column="3" Text="Nieobecności" FontAttributes="Bold"/>
+            <Label Grid.Column="4" Text="Max" FontAttributes="Bold"/>
+        </Grid>
+
+        <!-- WIERSZE TABELI -->
+        
+        <CollectionView ItemsSource="{Binding Subjects}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10">
+                        <Entry Grid.Column="0" Text="{Binding Nazwa}" Placeholder="Nazwa przedmiotu"/>
+                        <Entry Grid.Column="1" Text="{Binding Sala}" Placeholder="Sala"/>
+                        <Entry Grid.Column="2" Text="{Binding ECTS}" Placeholder="ECTS"/>
+                        <Entry Grid.Column="3" Text="{Binding AktualneNieobecnosci}" Placeholder="0"/>
+                        <Entry Grid.Column="4" Text="{Binding MaxNieobecnosci}" Placeholder="0"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentView>

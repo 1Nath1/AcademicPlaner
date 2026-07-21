@@ -47,16 +47,16 @@
                   Color="{StaticResource Background_ButtonColor}"
                   Size="60" />
 
-            <Color x:Key="PanelColor">#93BAD9</Color>
-            <Color x:Key="Background_color">#C7D7E7</Color>
-            <Color x:Key="RightPanelColor">#E9C6CE</Color>
+            <Color x:Key="PanelColor">#E7C6D1</Color> 
+            <Color x:Key="Background_color">#F2E2B6</Color>
+            <Color x:Key="RightPanelColor">#F4BEA4</Color>
             <Color x:Key="Primary">#fff8e7</Color>
-            <Color x:Key="Background_ButtonColor">#c492ae</Color>
+            <Color x:Key="Background_ButtonColor">#DF8E9C</Color>
             
             
             <!--kolory czcionek-->
-            <Color x:Key="PrimaryTextColor">#3e7eb1</Color>
-            <Color x:Key="SecondaryTextColor">#326690</Color>
+            <Color x:Key="PrimaryTextColor">#89890D</Color>
+            <Color x:Key="SecondaryTextColor">#A280A6</Color>
             <Color x:Key="TertiaryTextColor">#786254</Color>
             
             

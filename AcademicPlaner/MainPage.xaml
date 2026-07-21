@@ -8,7 +8,7 @@
         <!-- LEWA SEKCJA -->
 
         <Grid RowDefinitions="auto,*,*" BackgroundColor="{StaticResource PanelColor}" Grid.Column="0"
-            Padding="20" RowSpacing="10">
+            Padding="20" RowSpacing="20">
             
                 
             
@@ -70,18 +70,18 @@
         </Grid>
 
         <!-- ŚRODKOWA SEKCJA -->
-        <VerticalStackLayout
-    Grid.Column="1"
-    Padding="20"
-    BackgroundColor="{StaticResource Background_color}">
+        <ContentView x:Name="MainContentArea"
+            Grid.Column="1"
+            Padding="20"
+            BackgroundColor="{StaticResource Background_color}">
 
-            <Label
-        Text="Aktualna zakładka"
-        Style="{StaticResource TitleLabelStyle}"
+        <Label
+            Text="Aktualna zakładka"
+            Style="{StaticResource TitleLabelStyle}"
         
-        HorizontalOptions="Center"/>
+            HorizontalOptions="Center"/>
 
-        </VerticalStackLayout>
+        </ContentView>
 
 
         <!-- PRAWA SEKCJA -->
@@ -98,7 +98,8 @@
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource CalendarIcon}"
                     WidthRequest="130"
-                    Text="Kalendarz" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"/>
+                    Text="Kalendarz" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"
+                    Clicked ="OnCalendarClicked"/>
                
                 
                 
@@ -108,32 +109,32 @@
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource AssignmentIcon}"
                     WidthRequest="130"
-                    Text=" Zadania" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" />
+                    Text=" Zadania" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnAssignmentTrackerClicked"/>
             
 
                 <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource AbsenceIcon}"
                     WidthRequest="130"
-                     Text="Nieobecności" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"/>
+                     Text="Nieobecności" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnAbsenceClicked"/>
 
                 <Button
                    BackgroundColor="Transparent"
                    ImageSource="{StaticResource WeeklyScheduleIcon}"
                    WidthRequest="130"
-                    Text="Plan zajęć" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"/>
+                    Text="Plan zajęć" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnWWeeklyScheduleClicked"/>
 
                 <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource ExamsIcon}"
                     WidthRequest="130"
-                     Text ="Zaliczenia" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"/>
+                     Text ="Zaliczenia" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnExamsClicked"/>
 
                 <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource SubjectsIcon}"
                     WidthRequest="130"
-                     Text="Przedmioty" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"/>
+                     Text="Przedmioty" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnSubjectsClicked"/>
                 
             </VerticalStackLayout>
             </ScrollView>
