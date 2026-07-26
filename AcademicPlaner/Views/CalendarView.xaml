@@ -4,8 +4,7 @@
              x:Class="AcademicPlaner.Views.CalendarView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    Text="Kalendarz"
+    Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentView>

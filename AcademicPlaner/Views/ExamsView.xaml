@@ -4,8 +4,7 @@
              x:Class="AcademicPlaner.Views.ExamsView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    Text="Egzaminy"
+    Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center"/>
     </VerticalStackLayout>
 </ContentView>

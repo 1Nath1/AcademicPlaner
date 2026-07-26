@@ -4,8 +4,9 @@
              x:Class="AcademicPlaner.Views.AssignmentTrackerView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="Zadania"
+            Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center" />
+       
+
     </VerticalStackLayout>
 </ContentView>

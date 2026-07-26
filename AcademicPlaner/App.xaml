@@ -8,6 +8,24 @@
         
         <ResourceDictionary>
 
+            <FontImageSource x:Key="AddIcon"
+                FontFamily="FontAwesomeSolid"
+                Glyph="&#xf067;"
+                Color="{StaticResource TertiaryTextColor}"
+                Size="16" />
+            
+            <FontImageSource x:Key="DeleteIcon"
+                  FontFamily="FontAwesomeSolid"
+                  Glyph="&#xf2ed;"
+                  Color="{StaticResource TertiaryTextColor}"
+                  Size="12" />
+            
+            <FontImageSource x:Key="HomeIcon"
+                  FontFamily="FontAwesomeSolid"
+                  Glyph="&#xf015;"
+                  Color="{StaticResource Background_ButtonColor}"
+                  Size="60" />
+            
             <FontImageSource x:Key="CalendarIcon"
                   FontFamily="FontAwesomeSolid"
                   Glyph="&#xf133;"

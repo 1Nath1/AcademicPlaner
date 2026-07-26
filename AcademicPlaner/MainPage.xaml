@@ -94,18 +94,31 @@
             <VerticalStackLayout  HorizontalOptions="Center"
                                   
                 VerticalOptions="Center">
-                <Button
+
+                    <Button 
+                        BackgroundColor="Transparent"
+                        ImageSource="{StaticResource HomeIcon}"
+                        WidthRequest="130"
+                        Text="Home" 
+                        ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"
+                        Clicked="OnHomeClicked"
+                        />
+
+                    <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource CalendarIcon}"
                     WidthRequest="130"
                     Text="Kalendarz" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"
                     Clicked ="OnCalendarClicked"/>
-               
+
                 
-                
-            
-              
-                <Button
+
+
+
+
+
+
+                    <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource AssignmentIcon}"
                     WidthRequest="130"

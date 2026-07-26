@@ -24,14 +24,22 @@ namespace AcademicPlaner.ViewModels
             }
         }
 
-        private void AddNewSubject()
+        public void AddNewSubject()
         {
             var subject = new Subject();
-            subject.PropertyChanged += Subject_PropertyChanged;
+           
             Subjects.Add(subject);
         }
 
-        private void Subject_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        public void RemoveSubject(Subject subject)
+        {
+           
+            Subjects.Remove(subject);
+        }   
+
+
+
+        /*private void Subject_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             
 
@@ -48,10 +56,9 @@ namespace AcademicPlaner.ViewModels
 
             if (maNazwe && jestOstatnim)
             {
-                
                 AddNewSubject();
             }
-        }
+        }*/
 
     }
 }
