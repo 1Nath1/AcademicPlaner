@@ -111,13 +111,6 @@
                     Text="Kalendarz" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}"
                     Clicked ="OnCalendarClicked"/>
 
-                
-
-
-
-
-
-
                     <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource AssignmentIcon}"

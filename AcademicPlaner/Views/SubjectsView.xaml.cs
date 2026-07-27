@@ -28,7 +28,7 @@ public partial class SubjectsView : ContentView
     public SubjectsView()
 	{
 		InitializeComponent();
-		BindingContext = new SubjectsViewModel();
+		BindingContext = SharedData.SubjectsViewModel;
     }
 
 

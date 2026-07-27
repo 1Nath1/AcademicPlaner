@@ -78,8 +78,14 @@
             <Color x:Key="TertiaryTextColor">#786254</Color>
             
             
-            
-            
+            <!-- styl dla tabeli "Przedmioty"-->
+            <Style x:Key="SubTableStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="NunitoBold" />
+                <Setter Property="TextColor" Value="{StaticResource TertiaryTextColor}" />
+            </Style>
+
+
+
             <!--styl dla zwyklego tekstu-->
             <Style x:Key="LabelStyle1" TargetType="Label">
                 <Setter Property="FontFamily"

@@ -1,12 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:AcademicPlaner.ViewModels"
              x:Class="AcademicPlaner.Views.AssignmentTrackerView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Zadania"
-            Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center" />
-       
+    <ScrollView>
+        <Grid Padding="20" RowSpacing="10" RowDefinitions="auto,auto,auto,*">
 
-    </VerticalStackLayout>
+            <Label Grid.Row="0" Text="Zadania" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20" HorizontalOptions="Center"/>
+
+            <!-- NAGŁÓWEK TABELI -->
+            <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+                <Label Grid.Column="0" Text="Zadanie" FontAttributes="Bold"/>
+                <Label Grid.Column="1" Text="Przedmiot" FontAttributes="Bold"/>
+                <Label Grid.Column="2" Text="Data" FontAttributes="Bold"/>
+                <Label Grid.Column="3" Text="Status" FontAttributes="Bold"/>
+                <Label Grid.Column="4" Text=""/>
+            </Grid>
+
+            <!-- WIERSZE TABELI -->
+
+            <CollectionView Grid.Row="2" ItemsSource="{Binding Assignments}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+
+                        <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
+                            <Entry Grid.Column="0" Text="{Binding AssignmentName}" Placeholder="Zadanie" Style="{StaticResource SubTableStyle}" />
+                            <Picker Grid.Column="1" ItemsSource="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type ViewModels:AssignmentTrackerViewModel}}, Path=Subjects}" ItemDisplayBinding="{Binding Nazwa}" SelectedItem="{Binding Subject}" Style="{StaticResource SubTableStyle}"/>
+                            <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}"/>
+                            <CheckBox Grid.Column="3" IsChecked="{Binding IsCompleted}" HorizontalOptions="Center"  />
+                            
+                            <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         Clicked="OnDeleteAssignmentClicked"/>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center">
+                <ImageButton Source="{StaticResource AddIcon}" BackgroundColor="Transparent"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         Clicked="OnAddAssignmentClicked" />
+                <Label Text="Dodaj zadanie" 
+                VerticalOptions="Center"
+                Style="{StaticResource SubTableStyle}"/>
+
+            </HorizontalStackLayout>
+
+        </Grid>
+    </ScrollView>
 </ContentView>

@@ -11,7 +11,7 @@ namespace AcademicPlaner.ViewModels
     {
         public ObservableCollection<Subject> Subjects { get; set; }
 
-        private const int pusteWierszeStart = 9;
+        private const int pusteWierszeStart = 8;
 
 
         public SubjectsViewModel()
