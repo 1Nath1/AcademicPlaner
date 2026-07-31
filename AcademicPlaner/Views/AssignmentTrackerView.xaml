@@ -3,44 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModels="clr-namespace:AcademicPlaner.ViewModels"
              x:Class="AcademicPlaner.Views.AssignmentTrackerView">
+    <Grid>
     <ScrollView>
         <Grid Padding="20" RowSpacing="10" RowDefinitions="auto,auto,auto,*">
 
             <Label Grid.Row="0" Text="Zadania" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20" HorizontalOptions="Center"/>
 
             <!-- NAGŁÓWEK TABELI -->
-            <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
-                <Label Grid.Column="0" Text="Zadanie" FontAttributes="Bold"/>
-                <Label Grid.Column="1" Text="Przedmiot" FontAttributes="Bold"/>
-                <Label Grid.Column="2" Text="Data" FontAttributes="Bold"/>
-                <Label Grid.Column="3" Text="Status" FontAttributes="Bold"/>
-                <Label Grid.Column="4" Text=""/>
-            </Grid>
 
+
+            <Border Grid.Row="1" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource PanelColor}"
+                Stroke="Transparent"
+                Padding="10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+                    <Label Grid.Column="0" Text="Zadanie" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Text="Przedmiot" FontAttributes="Bold"/>
+                    <Label Grid.Column="2" Text="Data" FontAttributes="Bold"/>
+                    <Label Grid.Column="3" Text="Status" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Grid.Column="4" Text=""/>
+                </Grid>
+            </Border>
             <!-- WIERSZE TABELI -->
 
-            <CollectionView Grid.Row="2" ItemsSource="{Binding Assignments}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+            <Border Grid.Row="2" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource Primary}"
+                Padding="10"
+                    Stroke="Transparent">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <CollectionView Grid.Row="2" ItemsSource="{Binding Assignments}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
 
-                        <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
-                            <Entry Grid.Column="0" Text="{Binding AssignmentName}" Placeholder="Zadanie" Style="{StaticResource SubTableStyle}" />
-                            <Picker Grid.Column="1" ItemsSource="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type ViewModels:AssignmentTrackerViewModel}}, Path=Subjects}" ItemDisplayBinding="{Binding Nazwa}" SelectedItem="{Binding Subject}" Style="{StaticResource SubTableStyle}"/>
-                            <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}"/>
-                            <CheckBox Grid.Column="3" IsChecked="{Binding IsCompleted}" HorizontalOptions="Center"  />
-                            
-                            <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
+                            <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
+
+
+                                <Entry Grid.Column="0" 
+                                       Text="{Binding AssignmentName}" 
+                                       Placeholder="Zadanie" 
+                                       Style="{StaticResource SubTableStyle}" />
+
+
+                                <!--<Picker Grid.Column="1" 
+                                    ItemsSource="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type ViewModels:AssignmentTrackerViewModel}}, Path=Subjects}" 
+                                    ItemDisplayBinding="{Binding Nazwa}" 
+                                    SelectedItem="{Binding Subject}" 
+                                    Style="{StaticResource SubTableStyle}"/>-->
+
+                                    <Border Grid.Column="1" 
+                                        Stroke="{StaticResource PanelColor}"
+                                        StrokeThickness="1"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        StrokeShape="RoundRectangle 8">
+                                        <Grid ColumnDefinitions="*,Auto" Padding="8,0">
+                                            <Label Grid.Column="0" 
+                                                Text="{Binding Subject.Nazwa}" 
+                                                VerticalOptions="Center"
+                                                Style="{StaticResource SubTableStyle}"/>
+                                            <Image Grid.Column="1" 
+                                                Source="{StaticResource DropdownArrowIcon}" 
+                                                WidthRequest="12" HeightRequest="12"
+                                                VerticalOptions="Center"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnSubjectPickerTapped"/>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </Border>
+
+                                    <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}"/>
+                                <CheckBox Grid.Column="3" IsChecked="{Binding IsCompleted}" HorizontalOptions="Center"  />
+
+                                <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                          WidthRequest="30"
                          HeightRequest="30"
                          Clicked="OnDeleteAssignmentClicked"/>
 
 
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
 
             <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center">
                 <ImageButton Source="{StaticResource AddIcon}" BackgroundColor="Transparent"
@@ -55,4 +108,58 @@
 
         </Grid>
     </ScrollView>
+
+        
+        
+        
+        <!--Nakladka wyboru przedmiotow-->
+        <Grid x:Name="SubjectPickerOverlay" 
+              IsVisible="False"
+              BackgroundColor="Transparent">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayBackgroundTapped"/>
+            </Grid.GestureRecognizers>
+
+            <Border BackgroundColor="{StaticResource Primary}"
+                    Stroke="{StaticResource PanelColor}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="0"
+                    WidthRequest="280"
+                    MaximumHeightRequest="400"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="12" Opacity="0.2"/>
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,*" Padding="0">
+                    <Label Grid.Row="0" 
+                           Text="Wybierz przedmiot" 
+                           Style="{StaticResource TitleLabelStyle2}"
+                           Margin="16,16,16,8" HorizontalOptions="Center"/>
+
+                    <CollectionView Grid.Row="1" 
+                                    x:Name="SubjectsPickerList"
+                                    SelectionMode="Single"
+                                    SelectionChanged="OnSubjectSelected">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="16,12">
+                                    <Label Text="{Binding Nazwa}" 
+                                           Style="{StaticResource SubTableStyle}" HorizontalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Border>
+        </Grid>
+
+
+
+
+    </Grid>
 </ContentView>

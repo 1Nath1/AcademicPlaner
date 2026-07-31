@@ -28,8 +28,8 @@ namespace AcademicPlaner.Models
             }
         }
 
-        private DateTime? dueDate;
-        public DateTime? DueDate
+        private DateTime dueDate = DateTime.Today;
+        public DateTime DueDate
         {
             get => dueDate;
             set

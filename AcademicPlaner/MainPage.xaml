@@ -91,7 +91,7 @@
             BackgroundColor="{StaticResource RightPanelColor}">
 
             <ScrollView>
-            <VerticalStackLayout  HorizontalOptions="Center"
+                <VerticalStackLayout  HorizontalOptions="Center"
                                   
                 VerticalOptions="Center">
 
@@ -116,33 +116,37 @@
                     ImageSource="{StaticResource AssignmentIcon}"
                     WidthRequest="130"
                     Text=" Zadania" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnAssignmentTrackerClicked"/>
-            
 
-                <Button
+
+                    <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource AbsenceIcon}"
                     WidthRequest="130"
                      Text="Nieobecności" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnAbsenceClicked"/>
 
-                <Button
+                    <Button
                    BackgroundColor="Transparent"
                    ImageSource="{StaticResource WeeklyScheduleIcon}"
                    WidthRequest="130"
                     Text="Plan zajęć" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnWWeeklyScheduleClicked"/>
 
-                <Button
+                    <Button
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource ExamsIcon}"
                     WidthRequest="130"
                      Text ="Zaliczenia" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnExamsClicked"/>
 
-                <Button
-                    BackgroundColor="Transparent"
+                    <Button
+                    
                     ImageSource="{StaticResource SubjectsIcon}"
                     WidthRequest="130"
-                     Text="Przedmioty" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnSubjectsClicked"/>
-                
-            </VerticalStackLayout>
+                     Text="Przedmioty" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnSubjectsClicked">
+                    </Button>
+
+
+
+
+                </VerticalStackLayout>
             </ScrollView>
         </Grid>
         

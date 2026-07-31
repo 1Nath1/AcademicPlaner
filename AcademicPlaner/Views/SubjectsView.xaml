@@ -8,41 +8,61 @@
             <Label Grid.Row="0" Text="Przedmioty" Style="{StaticResource TitleLabelStyle}" Margin="0,0,0,20" HorizontalOptions="Center"/>
 
             <!-- NAGŁÓWEK TABELI -->
-            <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
-                <Label Grid.Column="0" Text="Nazwa" FontAttributes="Bold"/>
-                <Label Grid.Column="1" Text="Sala" FontAttributes="Bold"/>
-                <Label Grid.Column="2" Text="ECTS" FontAttributes="Bold"/>
-                <Label Grid.Column="3" Text="Nieobecności" FontAttributes="Bold"/>
-                <Label Grid.Column="4" Text="Max" FontAttributes="Bold"/>
-                <Label Grid.Column="5" Text=""/>
-            </Grid>
 
+            <Border Grid.Row="1" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource PanelColor}"
+                Stroke="Transparent"
+                Padding="10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+                    <Label Grid.Column="0" Text="Nazwa" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Text="Sala" FontAttributes="Bold"/>
+                    <Label Grid.Column="2" Text="ECTS" FontAttributes="Bold"/>
+                    <Label Grid.Column="3" Text="Nieobecności" FontAttributes="Bold"/>
+                    <Label Grid.Column="4" Text="Max" FontAttributes="Bold"/>
+                    <Label Grid.Column="5" Text=""/>
+                </Grid>
+
+            </Border>
             <!-- WIERSZE TABELI -->
 
-            <CollectionView Grid.Row="2" ItemsSource="{Binding Subjects}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+            <Border Grid.Row="2" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource Primary}"
+                Stroke="Transparent"
+                Padding="10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <CollectionView Grid.Row="2" ItemsSource="{Binding Subjects}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
 
-                        <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
-                            <Entry Grid.Column="0" Text="{Binding Nazwa}" Placeholder="Nazwa przedmiotu" Style="{StaticResource SubTableStyle}"/>
-                            <Entry Grid.Column="1" Text="{Binding Sala}" Placeholder="Sala" Style="{StaticResource SubTableStyle}"/>
-                            <Entry Grid.Column="2" Text="{Binding ECTS}" Placeholder="ECTS" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
-                            <Entry Grid.Column="3" Text="{Binding AktualneNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
-                            <Entry Grid.Column="4" Text="{Binding MaxNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}" />
+                            <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
+                                <Entry Grid.Column="0" Text="{Binding Nazwa}" Placeholder="Nazwa przedmiotu" Style="{StaticResource SubTableStyle}"/>
+                                <Entry Grid.Column="1" Text="{Binding Sala}" Placeholder="Sala" Style="{StaticResource SubTableStyle}"/>
+                                <Entry Grid.Column="2" Text="{Binding ECTS}" Placeholder="ECTS" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
+                                <Entry Grid.Column="3" Text="{Binding AktualneNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
+                                <Entry Grid.Column="4" Text="{Binding MaxNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}" />
 
-                            <ImageButton Grid.Column="5" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
+                                <ImageButton Grid.Column="5" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                              WidthRequest="30"
                              HeightRequest="30"
                              Clicked="OnDeleteSubjectClicked"/>
 
 
-                        </Grid>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            
             <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center">
                 <ImageButton Source="{StaticResource AddIcon}" BackgroundColor="Transparent"
                              WidthRequest="30"
