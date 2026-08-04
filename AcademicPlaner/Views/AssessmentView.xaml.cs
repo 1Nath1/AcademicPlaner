@@ -1,10 +1,13 @@
 using AcademicPlaner.ViewModels;
 using AcademicPlaner.Models;
+using System.Linq;
+
 namespace AcademicPlaner.Views;
 
 public partial class AssessmentView : ContentView
 {
     private Assessment currentlyEditingAssessment;
+   
     public AssessmentView()
 	{
 		InitializeComponent();
@@ -12,7 +15,7 @@ public partial class AssessmentView : ContentView
 
 	}
 
-    private void OnSubjectPickerTapped(object sender, EventArgs e)
+    private void OnTypePickerTapped(object sender, EventArgs e)
     {
 
         if (BindingContext is not AssessmentViewModel viewModel) return;
@@ -21,8 +24,8 @@ public partial class AssessmentView : ContentView
 
         currentlyEditingAssessment = assessment;
 
-        SubjectsPickerList.ItemsSource = viewModel.Subjects;
-        SubjectPickerOverlay.IsVisible = true;
+        TypesPickerList.ItemsSource = viewModel.AssessmentTypes;
+        TypePickerOverlay.IsVisible = true;
 
     }
 
@@ -43,6 +46,44 @@ public partial class AssessmentView : ContentView
         if (BindingContext is not ViewModels.AssessmentViewModel viewModel) return;
 
         viewModel.AddNewAssessment();
+    }
+
+    private void OnTypeSelected(object sender, SelectionChangedEventArgs e)
+    {
+
+        if (e.CurrentSelection.FirstOrDefault() is not string selectedType) return;
+        if (currentlyEditingAssessment == null) return;
+
+        currentlyEditingAssessment.AssessmentType = selectedType;
+
+        TypePickerOverlay.IsVisible = false;
+        currentlyEditingAssessment = null;
+
+        // Odznacz zaznaczenie w liście, żeby przy kolejnym otwarciu nic nie było podświetlone
+        TypesPickerList.SelectedItem = null;
+
+    }
+
+    private void OnTypeOverlayBackgroundTapped(object sender, EventArgs e)
+    {
+
+        TypePickerOverlay.IsVisible = false;
+        currentlyEditingAssessment = null;
+
+    }
+
+    private void OnSubjectPickerTapped(object sender, EventArgs e)
+    {
+
+        if (BindingContext is not AssessmentViewModel viewModel) return;
+        if (sender is not Grid grid) return;
+        if (grid.BindingContext is not Assessment assessment) return;
+
+        currentlyEditingAssessment = assessment;
+
+        SubjectsPickerList.ItemsSource = viewModel.Subjects;
+        SubjectPickerOverlay.IsVisible = true;
+
     }
 
     private void OnSubjectSelected(object sender, SelectionChangedEventArgs e)

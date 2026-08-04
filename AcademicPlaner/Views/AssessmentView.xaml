@@ -20,7 +20,7 @@
                         <Shadow  Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
                     </Border.Shadow>
 
-                    <Grid ColumnDefinitions="0.7*,1.5*,0.7*,0.7*,1*,1*,0.7*" Padding="10" BackgroundColor="{StaticResource PanelColor}" >
+                    <Grid ColumnDefinitions="1*,1*,0.7*,0.7*,1*,1*,0.7*" ColumnSpacing="10" Padding="10" BackgroundColor="{StaticResource PanelColor}" >
                     <Label Grid.Column="0"
                         Text="Przedmiot"
                         Style="{StaticResource TableHeaderStyle}"/>
@@ -57,8 +57,8 @@
                     <CollectionView Grid.Row="2"  ItemsSource="{Binding Assessments}" >
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid ColumnDefinitions="0.7*,1.5*,0.7*,0.7*,1*,1*,0.7*" Padding="10">
-
+                                <Grid ColumnDefinitions="1*,1*,0.7*,0.7*,1*,1*,0.7*" Padding="10" ColumnSpacing="10" >
+                                    <!-- Picker do przedmiotow-->
                                     <Border Grid.Column="0" 
                                         Stroke="{StaticResource PanelColor}"
                                         StrokeThickness="1"
@@ -80,6 +80,33 @@
                                     </Border>
 
 
+
+                                    <!-- Picker do rodzajow zaliczen-->
+                                    <Border Grid.Column="1" 
+                                        Stroke="{StaticResource PanelColor}"
+                                        StrokeThickness="1"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        StrokeShape="RoundRectangle 8">
+                                        <Grid ColumnDefinitions="*,Auto" Padding="8,0">
+                                            <Label Grid.Column="0" 
+                                            Text="{Binding AssessmentType}" 
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource TableRowStyle}"/>
+                                            <Image Grid.Column="1" 
+                                            Source="{StaticResource DropdownArrowIcon}" 
+                                            WidthRequest="12" HeightRequest="12"
+                                            VerticalOptions="Center"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnTypePickerTapped"/>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </Border>
+
+
+                                    <Entry Grid.Column="2" Placeholder="brak"  Style="{StaticResource TableRowStyle}" />
+                                    <Entry Grid.Column="3" Placeholder="brak"  Style="{StaticResource TableRowStyle}" />
+                                    <DatePicker Grid.Column="4" Date="{Binding Date}" Format="dd.MM.yyyy HH:mm " Style="{StaticResource TableRowStyle}" HorizontalOptions="Center" />
+                                    <CheckBox Grid.Column="5" IsChecked="{Binding IsPassed}" HorizontalOptions="Center"/>
                                     <ImageButton Grid.Column="6" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                                         WidthRequest="30"
                                         HeightRequest="30"
@@ -141,7 +168,7 @@
                             <DataTemplate>
                                 <Grid Padding="16,12">
                                     <Label Text="{Binding Nazwa}" 
-                                   Style="{StaticResource SubTableStyle}" HorizontalOptions="Center"/>
+                                   Style="{StaticResource TableRowStyle}" HorizontalOptions="Center"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -149,10 +176,55 @@
                 </Grid>
             </Border>
         </Grid>
-        
-        
-        
-        
-        
+
+        <!--Nakladka wyboru rodzaju zaliczenia-->
+        <Grid x:Name="TypePickerOverlay" 
+      IsVisible="False"
+      BackgroundColor="Transparent">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTypeOverlayBackgroundTapped"/>
+            </Grid.GestureRecognizers>
+
+            <Border BackgroundColor="{StaticResource Primary}"
+            Stroke="{StaticResource PanelColor}"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 16"
+            Padding="0"
+            WidthRequest="220"
+            MaximumHeightRequest="300"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="12" Opacity="0.2"/>
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,*" Padding="0">
+                    <Label Grid.Row="0" 
+                   Text="Rodzaj zaliczenia" 
+                   Style="{StaticResource TitleLabelStyle2}"
+                   Margin="16,16,16,8" HorizontalOptions="Center"/>
+
+                    <CollectionView Grid.Row="1" 
+                            x:Name="TypesPickerList"
+                            SelectionMode="Single"
+                            SelectionChanged="OnTypeSelected">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="16,12">
+                                    <Label Text="{Binding .}" 
+                                   Style="{StaticResource TableRowStyle}" HorizontalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Border>
+        </Grid>
+
+
+
+
     </Grid>
 </ContentView>
