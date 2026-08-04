@@ -21,11 +21,11 @@
                     <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
                 </Border.Shadow>
 
-                <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
-                    <Label Grid.Column="0" Text="Zadanie" FontAttributes="Bold"/>
-                    <Label Grid.Column="1" Text="Przedmiot" FontAttributes="Bold"/>
-                    <Label Grid.Column="2" Text="Data" FontAttributes="Bold"/>
-                    <Label Grid.Column="3" Text="Status" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}" >
+                    <Label Grid.Column="0" Text="Zadanie" Style="{StaticResource TableHeaderStyle}"/>
+                        <Label Grid.Column="1" Text="Przedmiot" Style="{StaticResource TableHeaderStyle}"/>
+                        <Label Grid.Column="2" Text="Data" Style="{StaticResource TableHeaderStyle}"/>
+                        <Label Grid.Column="3" Text="Status" Style="{StaticResource TableHeaderStyle}" />
                     <Label Grid.Column="4" Text=""/>
                 </Grid>
             </Border>
@@ -51,14 +51,7 @@
                                 <Entry Grid.Column="0" 
                                        Text="{Binding AssignmentName}" 
                                        Placeholder="Zadanie" 
-                                       Style="{StaticResource SubTableStyle}" />
-
-
-                                <!--<Picker Grid.Column="1" 
-                                    ItemsSource="{Binding Source={RelativeSource Mode=FindAncestorBindingContext, AncestorType={x:Type ViewModels:AssignmentTrackerViewModel}}, Path=Subjects}" 
-                                    ItemDisplayBinding="{Binding Nazwa}" 
-                                    SelectedItem="{Binding Subject}" 
-                                    Style="{StaticResource SubTableStyle}"/>-->
+                                       Style="{StaticResource TableRowStyle}" />
 
                                     <Border Grid.Column="1" 
                                         Stroke="{StaticResource PanelColor}"
@@ -80,13 +73,13 @@
                                         </Grid>
                                     </Border>
 
-                                    <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}"/>
+                                    <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}" HorizontalOptions="Center" />
                                 <CheckBox Grid.Column="3" IsChecked="{Binding IsCompleted}" HorizontalOptions="Center"  />
 
                                 <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                          WidthRequest="30"
                          HeightRequest="30"
-                         Clicked="OnDeleteAssignmentClicked"/>
+                         Clicked="OnDeleteAssignmentClicked" />
 
 
                             </Grid>
@@ -102,7 +95,7 @@
                          Clicked="OnAddAssignmentClicked" />
                 <Label Text="Dodaj zadanie" 
                 VerticalOptions="Center"
-                Style="{StaticResource SubTableStyle}"/>
+                Style="{StaticResource TableRowStyle}"/>
 
             </HorizontalStackLayout>
 

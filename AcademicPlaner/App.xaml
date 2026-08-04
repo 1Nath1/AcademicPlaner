@@ -5,7 +5,7 @@
              x:Class="AcademicPlaner.App">
     <Application.Resources>
 
-        
+
         <ResourceDictionary>
 
             <FontImageSource x:Key="DropdownArrowIcon"
@@ -19,19 +19,19 @@
                 Glyph="&#xf067;"
                 Color="{StaticResource TertiaryTextColor}"
                 Size="16" />
-            
+
             <FontImageSource x:Key="DeleteIcon"
                   FontFamily="FontAwesomeSolid"
                   Glyph="&#xf2ed;"
                   Color="{StaticResource TertiaryTextColor}"
                   Size="12" />
-            
+
             <FontImageSource x:Key="HomeIcon"
                   FontFamily="FontAwesomeSolid"
                   Glyph="&#xf015;"
                   Color="{StaticResource Background_ButtonColor}"
                   Size="60" />
-            
+
             <FontImageSource x:Key="CalendarIcon"
                   FontFamily="FontAwesomeSolid"
                   Glyph="&#xf133;"
@@ -71,23 +71,25 @@
                   Color="{StaticResource Background_ButtonColor}"
                   Size="60" />
 
-            <Color x:Key="PanelColor">#E7C6D1</Color> 
+            <Color x:Key="PanelColor">#E7C6D1</Color>
             <Color x:Key="Background_color">#F2E2B6</Color>
             <Color x:Key="RightPanelColor">#F4BEA4</Color>
             <Color x:Key="Primary">#fff8e7</Color>
             <Color x:Key="Background_ButtonColor">#DF8E9C</Color>
-            
-            
+
+
             <!--kolory czcionek-->
             <Color x:Key="PrimaryTextColor">#89890D</Color>
             <Color x:Key="SecondaryTextColor">#A280A6</Color>
             <Color x:Key="TertiaryTextColor">#786254</Color>
-            
-            
+
+
             <!-- styl dla tabeli "Przedmioty"-->
-            <Style x:Key="SubTableStyle" TargetType="Label">
+            <Style x:Key="TableRowStyle" TargetType="Label">
                 <Setter Property="FontFamily" Value="NunitoBold" />
                 <Setter Property="TextColor" Value="{StaticResource TertiaryTextColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="16" />
             </Style>
 
 
@@ -100,7 +102,7 @@
             Value="{StaticResource TertiaryTextColor}" />
                 <Setter Property="FontSize"
             Value="20" />
-                
+
             </Style>
 
 
@@ -125,7 +127,7 @@
                 <Setter Property="FontSize"
             Value="34" />
 
-                
+
 
             </Style>
 
@@ -147,6 +149,28 @@
      Value="Bold" />
 
             </Style>
+
+            <!-- styl dla naglowka tabeli-->
+
+            <Style x:Key="TableHeaderStyle" TargetType="Label">
+                
+                <Setter Property="FontFamily"
+                Value="NunitoBold" />
+                
+                <Setter Property="TextColor"
+                Value="{StaticResource Primary}" />
+                
+                <Setter Property="FontAttributes" Value="Bold"/>
+                
+                <Setter Property="FontSize"
+                Value="Subtitle" />
+                
+                <Setter Property="HorizontalOptions"
+                Value="Center" />
+
+            </Style>
+
+
 
 
 

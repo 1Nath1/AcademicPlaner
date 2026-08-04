@@ -52,16 +52,7 @@ namespace AcademicPlaner.Models
             }
         }
 
-        private int? aktNb;
-        public int? AktNb
-        {
-            get => aktNb;
-
-            set
-            {
-                aktNb = value; OnPropertyChanged();
-            }
-        }
+      
 
 
         public event PropertyChangedEventHandler PropertyChanged;

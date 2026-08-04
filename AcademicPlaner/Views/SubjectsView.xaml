@@ -18,13 +18,12 @@
                     <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
                 </Border.Shadow>
 
-                <Grid Grid.Row="1" ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
-                    <Label Grid.Column="0" Text="Nazwa" FontAttributes="Bold"/>
-                    <Label Grid.Column="1" Text="Sala" FontAttributes="Bold"/>
-                    <Label Grid.Column="2" Text="ECTS" FontAttributes="Bold"/>
-                    <Label Grid.Column="3" Text="Nieobecności" FontAttributes="Bold"/>
-                    <Label Grid.Column="4" Text="Max" FontAttributes="Bold"/>
-                    <Label Grid.Column="5" Text=""/>
+                <Grid Grid.Row="1" ColumnDefinitions="1.5*,1*,1*,1*,0.5*" Padding="10" BackgroundColor="{StaticResource PanelColor}">
+                    <Label Grid.Column="0" Text="Nazwa" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="1" Text="Sala" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="2" Text="ECTS" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="3" Text="Max" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="4" Text=""/>
                 </Grid>
 
             </Border>
@@ -43,18 +42,16 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
 
+                            <Grid ColumnDefinitions="1.5*,1*,1*,1*,0.5*" Padding="10" >
+                                <Entry Grid.Column="0" Text="{Binding Nazwa}"  Placeholder="Nazwa przedmiotu" Style="{StaticResource TableRowStyle}"/>
+                                <Entry Grid.Column="1" Text="{Binding Sala}" Placeholder="Sala" Style="{StaticResource TableRowStyle}"/>
+                                <Entry Grid.Column="2" Text="{Binding Ects}"  Placeholder="ECTS" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource TableRowStyle}"/>
+                                <Entry Grid.Column="3" Text="{Binding MaxNb}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource TableRowStyle}" />
 
-                            <Grid ColumnDefinitions="2*,1*,1.5*,1.5*,1*" Padding="10" >
-                                <Entry Grid.Column="0" Text="{Binding Nazwa}" Placeholder="Nazwa przedmiotu" Style="{StaticResource SubTableStyle}"/>
-                                <Entry Grid.Column="1" Text="{Binding Sala}" Placeholder="Sala" Style="{StaticResource SubTableStyle}"/>
-                                <Entry Grid.Column="2" Text="{Binding ECTS}" Placeholder="ECTS" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
-                                <Entry Grid.Column="3" Text="{Binding AktualneNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}"/>
-                                <Entry Grid.Column="4" Text="{Binding MaxNieobecnosci}" Placeholder="0" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource SubTableStyle}" />
-
-                                <ImageButton Grid.Column="5" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
+                                <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                              WidthRequest="30"
                              HeightRequest="30"
-                             Clicked="OnDeleteSubjectClicked"/>
+                             Clicked="OnDeleteSubjectClicked" HorizontalOptions="Center"/>
 
 
                             </Grid>
@@ -70,7 +67,7 @@
                              Clicked="OnAddSubjectClicked" />
                 <Label Text="Dodaj przedmiot" 
                     VerticalOptions="Center"
-                    Style="{StaticResource SubTableStyle}"/>
+                    Style="{StaticResource TableRowStyle}" />
                
             </HorizontalStackLayout>
 

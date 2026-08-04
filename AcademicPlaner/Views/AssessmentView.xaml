@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModels="clr-namespace:AcademicPlaner.ViewModels"
+             x:Class="AcademicPlaner.Views.AssessmentView">
+
+    <Grid>
+        <ScrollView>
+            <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="20" RowSpacing="10">
+                <Label Grid.Column="0"
+                    Text="Zaliczenia"
+                    Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center"/>
+                
+                <!--Naglowek tabeli-->
+                <Border Grid.Row="1" Stroke="Transparent" 
+                        StrokeShape="RoundRectangle 12"
+                        BackgroundColor="{StaticResource PanelColor}"
+                        Padding="10">
+                    <Border.Shadow>
+                        <Shadow  Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
+                    </Border.Shadow>
+
+                    <Grid ColumnDefinitions="0.7*,1.5*,0.7*,0.7*,1*,1*,0.7*" Padding="10" BackgroundColor="{StaticResource PanelColor}" >
+                    <Label Grid.Column="0"
+                        Text="Przedmiot"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="1"
+                        Text="Rodzaj zaliczenia"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="2"
+                        Text="Sala"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="3"
+                        Text="Budynek"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="4"
+                        Text="Data i godzina"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="5"
+                        Text="Zaliczenie"
+                        Style="{StaticResource TableHeaderStyle}"/>
+                        <Label Grid.Column="6" Text=""/>
+                    </Grid>
+                </Border>
+
+                <!-- Wiersze tabeli-->
+                <Border Grid.Row="2" 
+                        Stroke="Transparent" 
+                        Padding="10"
+                        StrokeShape="RoundRectangle 12 "
+                        BackgroundColor="{StaticResource Primary}">
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
+                    </Border.Shadow>
+
+
+                    <CollectionView Grid.Row="2"  ItemsSource="{Binding Assessments}" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="0.7*,1.5*,0.7*,0.7*,1*,1*,0.7*" Padding="10">
+
+                                    <Border Grid.Column="0" 
+                                        Stroke="{StaticResource PanelColor}"
+                                        StrokeThickness="1"
+                                        BackgroundColor="{StaticResource Primary}"
+                                        StrokeShape="RoundRectangle 8">
+                                        <Grid ColumnDefinitions="*,Auto" Padding="8,0">
+                                            <Label Grid.Column="0" 
+                                                Text="{Binding Subject.Nazwa}" 
+                                                VerticalOptions="Center"
+                                                Style="{StaticResource SubTableStyle}"/>
+                                            <Image Grid.Column="1" 
+                                                Source="{StaticResource DropdownArrowIcon}" 
+                                                WidthRequest="12" HeightRequest="12"
+                                                VerticalOptions="Center"/>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnSubjectPickerTapped"/>
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                    </Border>
+
+
+                                    <ImageButton Grid.Column="6" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
+                                        WidthRequest="30"
+                                        HeightRequest="30"
+                                        Clicked="OnDeleteAssessmentClicked" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Border>
+
+
+                <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center">
+                    <ImageButton Source="{StaticResource AddIcon}" BackgroundColor="Transparent"
+                        WidthRequest="30"
+                        HeightRequest="30"
+                        Clicked="OnAddAssessmentClicked" />
+                    <Label Text="Dodaj Zaliczenie" 
+                        VerticalOptions="Center"
+                        Style="{StaticResource TableRowStyle}"/>
+                </HorizontalStackLayout>
+
+            </Grid>
+        </ScrollView>
+
+        <!--Nakladka wyboru przedmiotow-->
+        <Grid x:Name="SubjectPickerOverlay" 
+      IsVisible="False"
+      BackgroundColor="Transparent">
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOverlayBackgroundTapped"/>
+            </Grid.GestureRecognizers>
+
+            <Border BackgroundColor="{StaticResource Primary}"
+            Stroke="{StaticResource PanelColor}"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 16"
+            Padding="0"
+            WidthRequest="280"
+            MaximumHeightRequest="400"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,4" Radius="12" Opacity="0.2"/>
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,*" Padding="0">
+                    <Label Grid.Row="0" 
+                   Text="Wybierz przedmiot" 
+                   Style="{StaticResource TitleLabelStyle2}"
+                   Margin="16,16,16,8" HorizontalOptions="Center"/>
+
+                    <CollectionView Grid.Row="1" 
+                            x:Name="SubjectsPickerList"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSubjectSelected">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Padding="16,12">
+                                    <Label Text="{Binding Nazwa}" 
+                                   Style="{StaticResource SubTableStyle}" HorizontalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Border>
+        </Grid>
+        
+        
+        
+        
+        
+    </Grid>
+</ContentView>

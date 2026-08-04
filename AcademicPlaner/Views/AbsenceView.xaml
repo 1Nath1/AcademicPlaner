@@ -2,9 +2,91 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AcademicPlaner.Views.AbsenceView">
-    <VerticalStackLayout>
-        <Label
+    
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,*" Padding=" 20" RowSpacing="10">
+
+            <Label Grid.Row="0"
             Text="Nieobecności"
-            Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center"/>
-    </VerticalStackLayout>
+            Style="{StaticResource TitleLabelStyle}" HorizontalOptions="Center" Margin="0,0,0,20"/>
+
+
+            <!--Naglowek -->
+
+            <Border Grid.Row="1" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource PanelColor}"
+                Stroke="Transparent"
+                Padding="10">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="6" Opacity="0.1"/>
+                </Border.Shadow>
+                <Grid Grid.Row="1" ColumnDefinitions="1*,1*,1.5*" Padding="10" BackgroundColor="{StaticResource PanelColor}"  >
+                    <Label Grid.Column="0" Text="Przedmiot" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="1" Text="Max nieobecności" Style="{StaticResource TableHeaderStyle}"/>
+                    <Label Grid.Column="2" Text="Twoje nieobecności" Style="{StaticResource TableHeaderStyle}"/>
+
+                </Grid>
+            </Border>
+
+            <!--Wiersze tabeli-->
+
+            <Border Grid.Row="2" 
+                StrokeShape="RoundRectangle 12"
+                BackgroundColor="{StaticResource Primary}"
+                Padding="10"
+                Stroke="Transparent">
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,2" Radius="8" Opacity="0.1"/>
+                </Border.Shadow>
+
+                <CollectionView Grid.Row="2" ItemsSource="{Binding Absences}">
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Grid ColumnDefinitions="1*,1*,1.5*" Padding="10" >
+                                <Label Grid.Column="0" 
+                                       Text="{Binding Subject.Nazwa}"
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource TableRowStyle}" />
+                                
+                                <Label Grid.Column="1" 
+                                       Text="{Binding Subject.MaxNb}" 
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource TableRowStyle}" />
+                                <Entry Grid.Column="2" 
+                                       Text="{Binding AbsenceCount}" 
+                                       VerticalOptions="Center"
+                                       Style="{StaticResource TableRowStyle}"/>
+
+                            </Grid>
+                            
+                            
+                            
+                            
+
+                        </DataTemplate>
+                        
+
+                    </CollectionView.ItemTemplate>
+                    
+                </CollectionView>
+            </Border>
+
+            <Grid Grid.IsVisible="{Binding ShowNoSubjectsMessage}"  Grid.Row="2"
+BackgroundColor="Transparent">
+                <Label Grid.Row="2" Text="Brak przedmiotów do wyświetlenia" FontSize="20" FontFamily="NunitoRegular" TextColor="{StaticResource TertiaryTextColor}" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+
+        
+        
+        
+        
+    
+
 </ContentView>

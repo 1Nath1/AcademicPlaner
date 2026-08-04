@@ -34,9 +34,9 @@
             MainContentArea.Content = new Views.WeeklyScheduleView();
         }
 
-        private void OnExamsClicked(object sender, EventArgs e)
+        private void OnAssessmentsClicked(object sender, EventArgs e)
         {
-            MainContentArea.Content = new Views.ExamsView();
+            MainContentArea.Content = new Views.AssessmentView();
         }
 
         private void OnSubjectsClicked(object sender, EventArgs e)

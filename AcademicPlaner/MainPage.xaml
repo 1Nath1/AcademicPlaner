@@ -134,7 +134,7 @@
                     BackgroundColor="Transparent"
                     ImageSource="{StaticResource ExamsIcon}"
                     WidthRequest="130"
-                     Text ="Zaliczenia" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnExamsClicked"/>
+                     Text ="Zaliczenia" ContentLayout="Top,3" Style="{StaticResource MenuButtonStyle}" Clicked ="OnAssessmentsClicked"/>
 
                     <Button
                     
