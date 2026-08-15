@@ -58,7 +58,7 @@
                                 <Entry Grid.Column="2" 
                                        Text="{Binding AbsenceCount}" 
                                        VerticalOptions="Center"
-                                       Style="{StaticResource TableRowStyle}"/>
+                                       Style="{StaticResource TableRowStyle}" MaxLength="1" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged"/>
 
                             </Grid>
                             

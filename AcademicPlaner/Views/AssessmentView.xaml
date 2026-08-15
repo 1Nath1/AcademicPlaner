@@ -64,11 +64,17 @@
                                         StrokeThickness="1"
                                         BackgroundColor="{StaticResource Primary}"
                                         StrokeShape="RoundRectangle 8">
+
+                                       
+                                        
+                                        
                                         <Grid ColumnDefinitions="*,Auto" Padding="8,0">
+                                            
                                             <Label Grid.Column="0" 
-                                                Text="{Binding Subject.Nazwa}" 
+                                                Text="{Binding SubjectDisplayName}" 
+                                               
                                                 VerticalOptions="Center"
-                                                Style="{StaticResource SubTableStyle}"/>
+                                                Style="{StaticResource TableRowStyle}" />
                                             <Image Grid.Column="1" 
                                                 Source="{StaticResource DropdownArrowIcon}" 
                                                 WidthRequest="12" HeightRequest="12"
@@ -79,7 +85,7 @@
                                         </Grid>
                                     </Border>
 
-
+                                    
 
                                     <!-- Picker do rodzajow zaliczen-->
                                     <Border Grid.Column="1" 
@@ -89,7 +95,7 @@
                                         StrokeShape="RoundRectangle 8">
                                         <Grid ColumnDefinitions="*,Auto" Padding="8,0">
                                             <Label Grid.Column="0" 
-                                            Text="{Binding AssessmentType}" 
+                                            Text="{Binding AssessmentDisplayName}" 
                                             VerticalOptions="Center"
                                             Style="{StaticResource TableRowStyle}"/>
                                             <Image Grid.Column="1" 
@@ -103,9 +109,9 @@
                                     </Border>
 
 
-                                    <Entry Grid.Column="2" Placeholder="brak"  Style="{StaticResource TableRowStyle}" />
-                                    <Entry Grid.Column="3" Placeholder="brak"  Style="{StaticResource TableRowStyle}" />
-                                    <DatePicker Grid.Column="4" Date="{Binding Date}" Format="dd.MM.yyyy HH:mm " Style="{StaticResource TableRowStyle}" HorizontalOptions="Center" />
+                                    <Entry Grid.Column="2" Placeholder="Brak" MaxLength="5" Style="{StaticResource TableRowStyle}"  PlaceholderColor="#9E9E9E"/>
+                                    <Entry Grid.Column="3" Placeholder="Brak" MaxLength="5" Keyboard="Numeric" TextChanged="OnNumericEntryTextChanged" Style="{StaticResource TableRowStyle}"  PlaceholderColor="#9E9E9E"/>
+                                    <DatePicker Grid.Column="4" Date="{Binding Date}" Format="dd.MM.yyyy" Style="{StaticResource TableRowStyle}" HorizontalOptions="Center" />
                                     <CheckBox Grid.Column="5" IsChecked="{Binding IsPassed}" HorizontalOptions="Center"/>
                                     <ImageButton Grid.Column="6" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
                                         WidthRequest="30"
@@ -191,8 +197,8 @@
             StrokeThickness="1"
             StrokeShape="RoundRectangle 16"
             Padding="0"
-            WidthRequest="220"
-            MaximumHeightRequest="300"
+            WidthRequest="280"
+            MaximumHeightRequest="400"
             HorizontalOptions="Center"
             VerticalOptions="Center">
 

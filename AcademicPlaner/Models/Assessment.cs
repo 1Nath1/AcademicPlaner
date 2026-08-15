@@ -8,13 +8,14 @@ namespace AcademicPlaner.Models
 {
     public class Assessment :INotifyPropertyChanged
     {
-
+        public string SubjectDisplayName => Subject?.Nazwa ?? "Wybierz przedmiot";
+        public string AssessmentDisplayName => AssessmentType ?? "Rodzaj zaliczenia";
         private Subject subject;
-        public Subject Subject { get { return subject; } set { subject = value; OnPropertyChanged(); } }
+        public Subject Subject { get { return subject; } set { subject = value; OnPropertyChanged(); OnPropertyChanged(nameof(SubjectDisplayName)); } }
 
 
         private string assessmentType;
-        public string AssessmentType { get { return assessmentType; } set { assessmentType = value; OnPropertyChanged(); } }
+        public string AssessmentType { get { return assessmentType; } set { assessmentType = value; OnPropertyChanged(); OnPropertyChanged(nameof(AssessmentDisplayName)); } }
 
 
         private string? roomNumber;
@@ -25,8 +26,8 @@ namespace AcademicPlaner.Models
         public string? BuildingNumber { get { return buildingNumber; } set { buildingNumber = value; OnPropertyChanged(); } }
 
 
-        private DateTime? date;
-        public DateTime? Date { get { return date; } set { date = value; OnPropertyChanged(); } }
+        private DateTime date = DateTime.Now;
+        public DateTime Date { get { return date; } set { date = value; OnPropertyChanged(); } }
 
         private bool? isPasssed;
         public bool? IsPassed { get { return isPasssed; } set { isPasssed = value; OnPropertyChanged(); } }

@@ -8,6 +8,8 @@
 
         <ResourceDictionary>
 
+           
+
             <FontImageSource x:Key="DropdownArrowIcon"
                 FontFamily="FontAwesomeSolid"
                 Glyph="&#xf078;"

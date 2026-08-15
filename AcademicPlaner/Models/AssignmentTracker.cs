@@ -8,6 +8,7 @@ namespace AcademicPlaner.Models
 {
     public class AssignmentTracker : INotifyPropertyChanged
     {
+        public string SubjectDisplayName => Subject?.Nazwa ?? "Wybierz przedmiot";
         private string assignmentName;
         public string AssignmentName
         {
@@ -24,7 +25,7 @@ namespace AcademicPlaner.Models
             get => subject;
             set
             {
-                subject = value; OnPropertyChanged();
+                subject = value; OnPropertyChanged(); OnPropertyChanged(nameof(SubjectDisplayName));
             }
         }
 

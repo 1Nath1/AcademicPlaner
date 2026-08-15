@@ -51,7 +51,7 @@
                                 <Entry Grid.Column="0" 
                                        Text="{Binding AssignmentName}" 
                                        Placeholder="Zadanie" 
-                                       Style="{StaticResource TableRowStyle}" />
+                                       Style="{StaticResource TableRowStyle}"  PlaceholderColor="#9E9E9E"/>
 
                                     <Border Grid.Column="1" 
                                         Stroke="{StaticResource PanelColor}"
@@ -60,9 +60,9 @@
                                         StrokeShape="RoundRectangle 8">
                                         <Grid ColumnDefinitions="*,Auto" Padding="8,0">
                                             <Label Grid.Column="0" 
-                                                Text="{Binding Subject.Nazwa}" 
+                                                Text="{Binding SubjectDisplayName}" 
                                                 VerticalOptions="Center"
-                                                Style="{StaticResource SubTableStyle}"/>
+                                                Style="{StaticResource TableRowStyle}"/>
                                             <Image Grid.Column="1" 
                                                 Source="{StaticResource DropdownArrowIcon}" 
                                                 WidthRequest="12" HeightRequest="12"
@@ -73,7 +73,7 @@
                                         </Grid>
                                     </Border>
 
-                                    <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" TextColor="{StaticResource TertiaryTextColor}" HorizontalOptions="Center" />
+                                    <DatePicker Grid.Column="2" Date="{Binding DueDate}" Format="dd.MM.yyyy" Style="{StaticResource TableRowStyle}" HorizontalOptions="Center" />
                                 <CheckBox Grid.Column="3" IsChecked="{Binding IsCompleted}" HorizontalOptions="Center"  />
 
                                 <ImageButton Grid.Column="4" Source="{StaticResource DeleteIcon}" BackgroundColor="Transparent"
@@ -142,7 +142,7 @@
                             <DataTemplate>
                                 <Grid Padding="16,12">
                                     <Label Text="{Binding Nazwa}" 
-                                           Style="{StaticResource SubTableStyle}" HorizontalOptions="Center"/>
+                                           Style="{StaticResource TableRowStyle}" HorizontalOptions="Center"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
